@@ -21,7 +21,12 @@
 			<artifactId>openxava</artifactId>
 			<version>${openxava.version}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.6.15.Final</version>
+		</dependency>
 		<!-- 
 		To access to your database uncomment the corresponding entry 
 		from the below dependencies. If you don't find yours, look in
