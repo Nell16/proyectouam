@@ -4,7 +4,6 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 import lombok.*;
 import org.openxava.model.Identifiable;
-
 import java.time.LocalDate;
 import java.util.*;
 
@@ -24,31 +23,29 @@ public class Justificacion extends Identifiable {
     @Column(name = "descripcion", length = 1000)
     private String descripcion;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "estado_justificacion", nullable = false)
-    private EstadoJustificacion estadoJustificacion;
-
-    @OneToMany(mappedBy = "justificacion")
-    private List<ImagenesAdjuntas> documentosAdjuntos;
-
     @Column(name = "fecha_emision", nullable = false)
     private LocalDate fechaEmision;
 
+    // Relación con ClasesCarrera
     @ManyToOne
-    @JoinColumn(name = "referente_justificador_id", nullable = false)
-    private ReferenteJustificante referenteJustificante;
+    @JoinColumn(name = "clase_carrera_id")  // Relación con ClasesCarrera
+    private ClasesCarrera clasesCarrera;
 
     @ManyToOne
     @JoinColumn(name = "grupo_id", nullable = false)
     private Grupo grupo;
 
-    @ManyToMany
-    @JoinTable(
-            name = "justificacion_clases",
-            joinColumns = @JoinColumn(name = "justificacion_id"),
-            inverseJoinColumns = @JoinColumn(name = "clase_id")
-    )
-    private List<Clase> clases;
+    // Relación con ImagenesAdjuntas
+    @OneToMany(mappedBy = "justificacion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ImagenesAdjuntas> documentosAdjuntos;
+
+    @ManyToOne
+    @JoinColumn(name = "referente_justificador_id", nullable = false)
+    private ReferenteJustificante referenteJustificante;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado_justificacion", nullable = false)
+    private EstadoJustificacion estadoJustificacion;
 
     @ManyToOne
     @JoinColumn(name = "administracion_id", nullable = false)

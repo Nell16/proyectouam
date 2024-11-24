@@ -2,9 +2,7 @@ package com.uam.proyectouam.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.openxava.annotations.DescriptionsList;
-import org.openxava.annotations.Required;
-import org.openxava.annotations.TextArea;
+import org.openxava.annotations.*;
 import org.openxava.model.Identifiable;
 
 import javax.persistence.*;
@@ -19,12 +17,14 @@ public class Carrera extends Identifiable {
     @Required
     private String nombre;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @DescriptionsList(descriptionProperties = "nombreCompleto")
+    @ManyToOne
+    @DescriptionsList
     private Facultad facultad;
 
     @TextArea
     private String descripcion;
 
+    @OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+    private List<ClasesCarrera> clasesCarrera;
 }
 

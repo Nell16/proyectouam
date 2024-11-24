@@ -1,0 +1,40 @@
+<application>
+    <module name="Carrera">
+        <model name="Carrera"/>
+    </module>
+    <module name="ClaseDC">
+        <model name="ClaseDC"/>
+    </module>
+    <module name="ClaseBasica">
+        <model name="ClaseBasica"/>
+    </module>
+    <module name="Facultad">
+        <model name="Facultad"/>
+    </module>
+    <module name="EstadoJustificacion">
+        <model name="EstadoJustificacion"/>
+    </module>
+    <module name="Estudiante">
+        <model name="Estudiante"/>
+    </module>
+    <module name="Grupo">
+        <model name="Grupo"/>
+    </module>
+    <module name="ImagenesAdjuntas">
+        <model name="ImagenesAdjuntas"/>
+    </module>
+    <module name="Justificacion">
+        <model name="Justificacion"/>
+    </module>
+    <module name="Profesor">
+        <model name="Profesor"/>
+    </module>
+    <module name="ReferenteJustificante">
+        <model name="ReferenteJustificante"/>
+    </module>
+    <module name="Administracion">
+        <model name="Administracion"/>
+    </module>
+
+
+</application>

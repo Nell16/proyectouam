@@ -6,12 +6,24 @@ import lombok.*;
 
 import java.util.List;
 
-@Entity
+@Entity  // Esta clase será gestionada como una entidad por OpenXava
+@View(name = "VistaClaseDC", members = "nombreClase, descripcion")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 @Table(name = "clase_dc")
 public class ClaseDC extends Clase {
 
+
+    @ManyToOne
+    @DescriptionsList
+    @JoinColumn(name = "carrera_id", nullable = false) // Aseguramos el mapeo correcto
+    private Carrera carrera;
+
+    @ManyToOne
+    @JoinColumn(name = "clases_carrera_id")  // Relación con ClasesCarrera
+    private ClasesCarrera clasesCarrera;  // Relación con ClasesCarrera
 }
+
 
 

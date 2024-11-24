@@ -16,7 +16,9 @@ import lombok.*;
  * Feel free feel to rename, modify or remove at your taste.
  */
 
-@Entity @Getter @Setter
+@MappedSuperclass
+@Getter
+@Setter
 public class YourFirstEntity extends Identifiable {
 	
 	@Column(length=50) @Required

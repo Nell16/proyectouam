@@ -9,12 +9,12 @@ import org.openxava.model.Identifiable;
 
 import javax.persistence.*;
 
-@Entity
+@MappedSuperclass
 @Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
-public class Usuario extends Identifiable {
+public abstract class Usuario extends Identifiable{
 
     @Column(length = 50, unique = true)
     @Required

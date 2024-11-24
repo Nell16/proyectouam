@@ -10,9 +10,8 @@ import org.openxava.model.Identifiable;
 @Getter
 @Setter
 public class ImagenesAdjuntas extends Identifiable {
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "justificacion_id")
-    @DescriptionsList
     private Justificacion justificacion;
 
     @Lob
@@ -21,5 +20,6 @@ public class ImagenesAdjuntas extends Identifiable {
 
     @Column(name = "nombre_documento")
     private String nombreDocumento;
-    //Muy posible modificaremos esta clase de aca
+
+    //Muy posible modificaremos esta clase de aca chicos
 }
