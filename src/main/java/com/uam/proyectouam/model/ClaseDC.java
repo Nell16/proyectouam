@@ -1,29 +1,27 @@
 package com.uam.proyectouam.model;
 
 import javax.persistence.*;
+
+import com.uam.proyectouam.herencia.Clase;
 import org.openxava.annotations.*;
 import lombok.*;
 
-import java.util.List;
-
-@Entity  // Esta clase será gestionada como una entidad por OpenXava
-@View(name = "VistaClaseDC", members = "nombreClase, descripcion")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
 @Getter
 @Setter
 @Table(name = "clase_dc")
+@View(name="simple",members="nombre, carrera")
+//@Tab(properties = "nombre, carrera")
 public class ClaseDC extends Clase {
 
-
     @ManyToOne
-    @DescriptionsList
-    @JoinColumn(name = "carrera_id", nullable = false) // Aseguramos el mapeo correcto
+    @ReferenceView("simple")
+    @NoFrame
     private Carrera carrera;
 
-    @ManyToOne
-    @JoinColumn(name = "clases_carrera_id")  // Relación con ClasesCarrera
-    private ClasesCarrera clasesCarrera;  // Relación con ClasesCarrera
 }
+
+
 
 
 

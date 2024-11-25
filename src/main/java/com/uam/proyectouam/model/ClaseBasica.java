@@ -1,23 +1,28 @@
 package com.uam.proyectouam.model;
 
 import javax.persistence.*;
-import org.openxava.annotations.*;
+
+import com.uam.proyectouam.herencia.Clase;
 import lombok.*;
+import org.openxava.annotations.NoModify;
+import org.openxava.annotations.ReadOnly;
+import org.openxava.annotations.Tab;
 
-import java.util.List;
-
-@Entity  // Esta clase será gestionada como una entidad por OpenXava
-@View(name = "VistaClaseDC", members = "nombreClase, descripcion")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
 @Getter
 @Setter
 @Table(name = "clase_basica")
+@Tab(properties = "nombre, tipoClase")
 public class ClaseBasica extends Clase {
 
-    @ManyToOne
-    @JoinColumn(name = "clases_carrera_id")  // Relación con ClasesCarrera
-    private ClasesCarrera clasesCarrera;  // Relación con ClasesCarrera
-
+    public String getTipoClase(){
+        return new StringBuffer("Basica / Compartida")
+                .toString();
+    }
 }
+
+
+
+
 
 

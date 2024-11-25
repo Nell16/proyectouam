@@ -1,18 +1,19 @@
 package com.uam.proyectouam.model;
 
+import com.uam.proyectouam.herencia.Usuario;
 import lombok.Getter;
 import lombok.Setter;
+import org.openxava.annotations.Tab;
 import org.openxava.annotations.View;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Entity  // Esta clase será gestionada como una entidad por OpenXava
-@View(name = "VistaEstudiante", members = "nombreUsuario, emailUsuario")
+@Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="estudiante")
 @Getter
 @Setter
+@Tab(properties = "cif, nombreCompleto, correo")
 public class Estudiante extends Usuario {
 
 

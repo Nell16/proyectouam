@@ -1,6 +1,4 @@
-package com.uam.proyectouam.model;
-
-import org.openxava.model.Identifiable;
+package com.uam.proyectouam.herencia;
 
 public enum EstadoJustificacion {
     PENDIENTE,

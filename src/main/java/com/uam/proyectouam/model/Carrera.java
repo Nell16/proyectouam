@@ -9,22 +9,21 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "carrera")
 @Getter
 @Setter
+@Table(name = "carrera")
+@View(name="simple",members="nombre, facultad")
 public class Carrera extends Identifiable {
 
-    @Required
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @ManyToOne
-    @DescriptionsList
-    private Facultad facultad;
-
-    @TextArea
+    @Column(name = "descripcion", length = 1000)
     private String descripcion;
 
-    @OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
-    private List<ClasesCarrera> clasesCarrera;
+    @ManyToOne
+    @DescriptionsList(descriptionProperties = "nombre")
+    private Facultad facultad;
+
 }
 
