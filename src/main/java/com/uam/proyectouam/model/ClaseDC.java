@@ -7,11 +7,10 @@ import org.openxava.annotations.*;
 import lombok.*;
 
 @Entity
+@Table(name = "clase_dc")
 @Getter
 @Setter
-@Table(name = "clase_dc")
-@View(name="simple",members="nombre, carrera")
-//@Tab(properties = "nombre, carrera")
+@Tab(properties = "nombre, carrera.nombre, carrera.facultad.nombre")
 public class ClaseDC extends Clase {
 
     @ManyToOne
