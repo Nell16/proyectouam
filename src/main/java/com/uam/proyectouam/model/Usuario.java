@@ -13,15 +13,14 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NamedQueries({
-        @NamedQuery(name="Usuario.all",
-                query = "select e from Usuario e" ),
+        @NamedQuery(name = "Usuario.all",
+                query = "select e from Usuario e"),
 
-        @NamedQuery(name="Usuario.findPassword",
-                query = "select e from Usuario e" +
-                        " where e.cif = ?1 and e.password = ?2")
-
+        @NamedQuery(name = "Usuario.findPassword",
+                query = "select e from Usuario e " +
+                        "where e.cif = ?1 and e.password = ?2")
 })
-@Tab(properties = "cif, nombre, correo")
+@Tab(properties = "cif, nombreCompleto, correo")
 public abstract class Usuario extends Identifiable {
 
     @Column(length = 50, unique = true)
@@ -33,16 +32,14 @@ public abstract class Usuario extends Identifiable {
     private String primerNombre;
 
     @Column(length = 100)
-    @Required
-    private String segundoNombre;
+    private String segundoNombre; // Puede no ser obligatorio
 
     @Column(length = 100)
     @Required
     private String primerApellido;
 
     @Column(length = 100)
-    @Required
-    private String segundoApellido;
+    private String segundoApellido; // Puede no ser obligatorio
 
     @Column(length = 100, unique = true)
     @Required
@@ -53,8 +50,12 @@ public abstract class Usuario extends Identifiable {
     @Required
     private String password;
 
+    @Transient
     public String getNombreCompleto() {
-        return primerNombre + " " + primerApellido
-                + " " + segundoNombre + " " + segundoApellido;
+        // Manejar valores nulos para evitar NullPointerException
+        return (primerNombre != null ? primerNombre : "") + " " +
+                (primerApellido != null ? primerApellido : "") + " " +
+                (segundoNombre != null ? segundoNombre : "") + " " +
+                (segundoApellido != null ? segundoApellido : "");
     }
 }

@@ -9,7 +9,7 @@ import lombok.*;
 @Table(name = "clase_dc")
 @Getter
 @Setter
-@Tab(properties = "nombre, carrera.nombre, carrera.facultad.nombre")
+@Tab(properties = "nombre, carrera.nombre, carrera.facultad.nombre, nombresGrupos")
 public class ClaseDC extends Clase {
 
     @ManyToOne

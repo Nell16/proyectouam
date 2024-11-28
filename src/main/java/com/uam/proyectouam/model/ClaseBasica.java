@@ -9,7 +9,7 @@ import org.openxava.annotations.Tab;
 @Getter
 @Setter
 @Table(name = "clase_basica")
-@Tab(properties = "nombre, tipoClase")
+@Tab(properties = "nombre, tipoClase, nombresGrupos")
 public class ClaseBasica extends Clase {
 
     public String getTipoClase(){
