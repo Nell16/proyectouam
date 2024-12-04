@@ -16,11 +16,16 @@ import java.util.stream.Collectors;
 @Tab(properties = "cif, nombreCompleto, correo, nombresClases, nombresGrupos")
 public class Profesor extends Usuario {
 
+    //Relaciones inician aqui
+
     @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
     @ListAction("Collection.add")
+    @Collapsed
     private Set<Grupo> grupos = new HashSet<>();
 
+
     @ManyToMany(mappedBy = "profesores")
+    @Collapsed
     private Set<Clase> clasesProfesor = new HashSet<>();
 
     @Transient
@@ -37,5 +42,11 @@ public class Profesor extends Usuario {
         return grupos.stream()
                 .map(Grupo::getNombreGrupo)
                 .collect(Collectors.joining(", "));
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void establecerTipoUsuario() {
+        this.setTipoUsuario("Profesor");
     }
 }

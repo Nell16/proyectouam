@@ -13,4 +13,9 @@ import javax.persistence.*;
 @Setter
 @Tab(properties = "cif, nombreCompleto, correo")
 public class Administracion extends Usuario {
+    @PrePersist
+    @PreUpdate
+    private void establecerTipoUsuario() {
+        this.setTipoUsuario("Administrador");
+    }
 }

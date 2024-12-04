@@ -2,8 +2,10 @@ package com.uam.proyectouam.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.openxava.annotations.EmailList;
 import org.openxava.annotations.Required;
 import org.openxava.annotations.Stereotype;
+import org.openxava.annotations.TextArea;
 import org.openxava.model.Identifiable;
 import java.util.Date;
 
@@ -15,26 +17,26 @@ import javax.persistence.*;
 @Setter
 public class ReferenteJustificante extends Identifiable {
 
-    @Column(length = 100)
-    @Required
+    @Column(length = 100, nullable = false)
     private String nombre;
 
-    @Column(length = 100)
-    @Required
-    @Stereotype("EMAIL")
+    @Column(length = 100, nullable = false)
+    @EmailList
     private String correo;
 
     @Column(length = 15)
     private String telefono;
 
     @Column(length = 100)
-    @Required
     private String institucion;
 
+    @TextArea
     @Column(length = 500)
     private String motivoConstancia;
 
     @Temporal(TemporalType.DATE)
-    @Required
+    @Column(nullable = false)
     private Date fechaEmision;
+
 }
+

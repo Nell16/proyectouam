@@ -9,12 +9,18 @@ import org.openxava.annotations.Tab;
 @Getter
 @Setter
 @Table(name = "clase_basica")
-@Tab(properties = "nombre, tipoClase, nombresGrupos")
+@Tab(properties = "nombre, tipoClase, nombresGrupos, nombresEstudiantes, nombresProfesores")
 public class ClaseBasica extends Clase {
 
     public String getTipoClase(){
         return new StringBuffer("Basica / Compartida")
                 .toString();
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void establecerTipoClase() {
+        this.setTipoClase("Basica / Compartida");
     }
 }
 

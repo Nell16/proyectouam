@@ -20,7 +20,7 @@ import javax.persistence.*;
                 query = "select e from Usuario e " +
                         "where e.cif = ?1 and e.password = ?2")
 })
-@Tab(properties = "cif, nombreCompleto, correo")
+@Tab(properties = "cif, nombreCompleto, correo, tipoUsuario")
 public abstract class Usuario extends Identifiable {
 
     @Column(length = 50, unique = true)
@@ -49,6 +49,11 @@ public abstract class Usuario extends Identifiable {
     @Column(length = 255)
     @Required
     private String password;
+
+    @Column(name = "tipo_usuario", length = 50)
+    @ReadOnly
+    private String tipoUsuario;
+
 
     @Transient
     public String getNombreCompleto() {

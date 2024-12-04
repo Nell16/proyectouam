@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Table(name = "clase")
-@Tab(properties ="nombre, descripcion, nombresGrupos, nombresEstudiantes, nombresProfesores")
+@Tab(properties ="nombre, descripcion, tipoClase, carrera.nombre, nombresGrupos, nombresEstudiantes, nombresProfesores")
 public abstract class Clase extends Identifiable {
 
     @Column(name = "nombre", nullable = false)
@@ -23,6 +23,10 @@ public abstract class Clase extends Identifiable {
 
     @TextArea
     private String descripcion;
+
+    @Column(name = "tipo_clase", length = 50)
+    @ReadOnly
+    private String tipoClase;
 
     @OneToMany(mappedBy = "clase", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Grupo> grupos = new HashSet<>();

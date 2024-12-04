@@ -20,12 +20,13 @@
         	class="actions.CreateTeacher">
     	</action>
 	</controller>
-    -->
+	-->
+    <!--
     <controller name="SignIn">
         <action name="init" on-init="true" hidden="true"
                 class="com.openxava.naviox.actions.InitSignInAction"/>
         <action name="signIn" label="Entrar"
                 class="com.uam.proyectouam.action.MySignInAction"/>
-    </controller>
+    </controller> -->
 
 </controllers>

@@ -41,4 +41,10 @@ public class Estudiante extends Usuario {
                 .map(Grupo::getNombreGrupo)
                 .collect(Collectors.joining(", "));
     }
+
+    @PrePersist
+    @PreUpdate
+    private void establecerTipoUsuario() {
+        this.setTipoUsuario("Estudiante");
+    }
 }

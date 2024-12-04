@@ -6,6 +6,7 @@ import org.openxava.annotations.*;
 import org.openxava.model.Identifiable;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -14,7 +15,8 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Table(name = "carrera")
-@View(name="simple",members="nombre, facultad, nombresEstudiantes")
+@View(name = "simple", members = "nombre, facultad.nombre, nombresClasesDC, nombresEstudiantes")
+@Tab(properties ="nombre, facultad.nombre, nombresClasesDC, nombresEstudiantes")
 public class Carrera extends Identifiable {
 
     @Column(name = "nombre", nullable = false)
@@ -27,14 +29,18 @@ public class Carrera extends Identifiable {
     @DescriptionsList(descriptionProperties = "nombre")
     private Facultad facultad;
 
-    @OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
-    @ListAction("Collection.add")
-    private Set<ClaseDC> clasesdc;
+    @ManyToMany
+    @JoinTable(
+            name = "carrera_claseDC", // Nombre de la tabla de unión
+            joinColumns = @JoinColumn(name = "carrera_id"), // Columna para Carrera
+            inverseJoinColumns = @JoinColumn(name = "claseDC_id") // Columna para ClaseDC
+    )
+    private Set<ClaseDC> clasesDC = new HashSet<>();
 
     @Transient
-    public String getNombresClasesdc() {
-        if (clasesdc == null || clasesdc.isEmpty()) return "Sin Clases Carrera";
-        return clasesdc.stream()
+    public String getNombresClasesDC() {
+        if (clasesDC == null || clasesDC.isEmpty()) return "Sin clases";
+        return clasesDC.stream()
                 .map(ClaseDC::getNombre)
                 .collect(Collectors.joining(", "));
     }
@@ -50,8 +56,6 @@ public class Carrera extends Identifiable {
                 .map(Estudiante::getNombreCompleto)
                 .collect(Collectors.joining(", "));
     }
-
-
-
 }
+
 

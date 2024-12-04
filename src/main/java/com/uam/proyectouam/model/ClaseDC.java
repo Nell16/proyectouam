@@ -5,19 +5,36 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Entity
 @Table(name = "clase_dc")
 @Getter
 @Setter
-@Tab(properties = "nombre, carrera.nombre, carrera.facultad.nombre, nombresGrupos")
+@Tab(properties = "nombre, nombresCarreras, nombresGrupos, nombresEstudiantes, nombresProfesores")
 public class ClaseDC extends Clase {
 
-    @ManyToOne
-    @ReferenceView("simple")
-    @NoFrame
-    private Carrera carrera;
+    @ManyToMany(mappedBy = "clasesDC") // Debe coincidir con el nombre del atributo en Carrera
+    @Collapsed
+    private Set<Carrera> carreraClase = new HashSet<>();
 
+    @Transient
+    public String getNombresCarreras() {
+        if (carreraClase == null || carreraClase.isEmpty()) return "Sin carreras";
+        return carreraClase.stream()
+                .map(Carrera::getNombre)
+                .collect(Collectors.joining(", "));
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void establecerTipoClase() {
+        this.setTipoClase("De Carrera");
+    }
 }
+
 
 
 
