@@ -8,11 +8,11 @@ import org.openxava.annotations.*;
 import org.openxava.model.Identifiable;
 
 @Entity
-@View(members=
-        "nombreDocumento;" +
-                "justificacion { justificacion }" +
-                "Adjunto { documento }"
-)
+//@View(members=
+//        "nombreDocumento;" +
+//                "justificacion { justificacion }" +
+//                "Adjunto { documento }"
+//)
 @Table(name = "imagenes_adjuntas")
 @Getter
 @Setter

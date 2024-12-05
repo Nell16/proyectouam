@@ -19,12 +19,11 @@ import java.util.stream.Collectors;
 @Table(name = "facultad")
 @Getter
 @Setter
-@View(members =
-                "nombre;" +
-                "];" +
-                "descripcion { descripcion }" +
-                "carreras { carreras }"
-)
+//@View(members =
+//        "nombre;" +
+//                "descripcion { descripcion }" +
+//                "carreras { carreras }"
+//)
 @Tab(properties = "nombre, descripcion, nombresCarreras")
 public class Facultad extends Identifiable {
 

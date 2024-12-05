@@ -16,15 +16,13 @@ import java.util.Date;
 @Table(name = "referente_justificante")
 @Getter
 @Setter
-@View(members =
-        "Emitor [#" +
-                "nombre, correo;" +
-                "telefono, institucion;" +
-                "fechaEmision;" +
-                "];" +
-                "Motivo { motivoConstancia }" +
-                "justificaciones { justificaciones }"
-)
+//@View(members =
+//                "nombre, correo;" +
+//                "telefono, institucion;" +
+//                "fechaEmision;" +
+//                "Motivo { motivoConstancia }" +
+//                "justificaciones { justificaciones }"
+//)
 public class ReferenteJustificante extends Identifiable {
 
     @Column(length = 100, nullable = false)

@@ -18,14 +18,12 @@ import org.openxava.annotations.View;
 @Getter
 @Setter
 @Table(name = "clase_basica")
-@View(members =
-        "ClaseBasica [#" +
-                "nombre, descripcion, tipoClase;" +
-                "];" +
-                "grupos { grupos }" +
-                "estudiantes { estudiantes }" +
-                "profesores { profesores }"
-)
+//@View(members =
+//                "nombre, descripcion, tipoClase;" +
+//                "grupos { grupos }" +
+//                "estudiantes { estudiantes }" +
+//                "profesores { profesores }"
+//)
 @Tab(properties = "nombre, tipoClase, nombresGrupos, nombresEstudiantes, nombresProfesores")
 public class ClaseBasica extends Clase {
 

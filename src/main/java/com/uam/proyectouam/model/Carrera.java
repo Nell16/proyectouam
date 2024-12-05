@@ -21,15 +21,12 @@ import java.util.stream.Collectors;
 )
 @Getter
 @Setter
+//@View(members =
+//        "nombre;" +
+//                "descripcion { descripcion }" +
+//                "facultad { facultad }"
+//
 @Table(name = "carrera")
-@View(members =
-        "Carrera [#" +
-                "nombre, facultad;" +
-                "];" +
-                "descripcion { descripcion }" +
-                "clases_carrera { clasesDC }" +
-                "estudiantes { estudiantes }"
-)
 @Tab(properties ="nombre, facultad.nombre, nombresClasesDC, nombresEstudiantes")
 public class Carrera extends Identifiable {
 

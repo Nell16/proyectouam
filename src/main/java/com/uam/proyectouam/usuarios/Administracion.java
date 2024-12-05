@@ -22,15 +22,14 @@ import javax.persistence.Table;
 @Table(name = "administracion")
 @Getter
 @Setter
-@View(members=
-        "cif;" +
-                "Estudiante [#" +
-                "primerNombre, correo;" +
-                "segundoNombre, password;" +
-                "primerApellido, tipoUsuario;" +
-                "segundoApellido, rol;" +
-                "];"
-)
+//@View(members=
+//        "cif;" +
+//
+//                "primerNombre, correo;" +
+//                "segundoNombre, password;" +
+//                "primerApellido, tipoUsuario;" +
+//                "segundoApellido, rol;"
+//)
 @Tab(properties = "cif, nombreCompleto, correo")
 public class Administracion extends Usuario {
 

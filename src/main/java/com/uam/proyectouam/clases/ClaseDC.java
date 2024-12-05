@@ -20,15 +20,13 @@ import java.util.stream.Collectors;
 @Table(name = "clase_dc")
 @Getter
 @Setter
-@View(members =
-        "ClaseDC [#" +
-                "nombre, descripcion, tipoClase;" +
-                "];" +
-                "carreras { carreraClase }" +
-                "grupos { grupos }" +
-                "estudiantes { estudiantes }" +
-                "profesores { profesores }"
-)
+//@View(members =
+//                "nombre, descripcion, tipoClase;" +
+//                "carreras { carreraClase }" +
+//                "grupos { grupos }" +
+//                "estudiantes { estudiantes }" +
+//                "profesores { profesores }"
+//)
 @Tab(properties = "nombre, nombresCarreras, nombresGrupos, nombresEstudiantes, nombresProfesores")
 public class ClaseDC extends Clase {
 

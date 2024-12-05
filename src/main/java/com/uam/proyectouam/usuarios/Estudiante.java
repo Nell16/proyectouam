@@ -23,18 +23,16 @@ import java.util.stream.Collectors;
 @Table(name = "estudiante")
 @Getter
 @Setter
-@View(members=
-        "cif;" +
-                "Estudiante [#" +
-                "primerNombre, correo;" +
-                "segundoNombre, password;" +
-                "primerApellido, tipoUsuario;" +
-                "segundoApellido, rol;" +
-                "];" +
-                "carrera { carrera }" +
-                "clases { clasesEstudiante }" +
-                "grupos { gruposEstudiante }"
-)
+//@View(members=
+//        "cif;" +
+//                "primerNombre, correo;" +
+//                "segundoNombre, password;" +
+//                "primerApellido, tipoUsuario;" +
+//                "segundoApellido, rol;" +
+//                "carrera { carrera }" +
+//                "clases { clasesEstudiante }" +
+//                "grupos { gruposEstudiante }"
+//)
 @Tab(properties = "cif, nombreCompleto, correo, carrera.nombre, nombresClases, nombresGrupos")
 public class Estudiante extends Usuario {
 

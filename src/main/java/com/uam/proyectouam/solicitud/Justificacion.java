@@ -14,15 +14,13 @@ import java.util.*;
 @Table(name = "justificacion")
 @Getter
 @Setter
-@View(members =
-        "Solicitud [#" +
-                "fechaSolicitud, estado;" +
-                "];" +
-                "descripcion { descripcion }" +
-                "solicitante { usuario }" +
-                "emitor { referentesJustificantes }" +
-                "adjunto { imagenesAdjuntas }"
-)
+//@View(members =
+//                "fechaSolicitud, estado;" +
+//                "descripcion { descripcion }" +
+//                "solicitante { usuario }" +
+//                "emitor { referentesJustificantes }" +
+//                "adjunto { imagenesAdjuntas }"
+//)
 @Tab(properties = "fechaSolicitud, estado, descripcion, usuario.nombreCompleto")
 public class Justificacion extends Identifiable {
 
