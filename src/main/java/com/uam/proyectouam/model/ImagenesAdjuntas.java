@@ -15,17 +15,17 @@ public class ImagenesAdjuntas extends Identifiable {
     @JoinColumn(name = "justificacion_id", nullable = false)
     private Justificacion justificacion;
 
-    @Lob
+    @File
     @Column(name = "documento", nullable = false)
     private byte[] documento;
 
+    @Hidden
     @Column(name = "nombre_documento", nullable = false, length = 255)
     private String nombreDocumento;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
-    //ESTO ESTA MALO
 
 }
 

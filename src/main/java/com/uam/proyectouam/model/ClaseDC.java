@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Tab(properties = "nombre, nombresCarreras, nombresGrupos, nombresEstudiantes, nombresProfesores")
 public class ClaseDC extends Clase {
 
-    @ManyToMany(mappedBy = "clasesDC") // Debe coincidir con el nombre del atributo en Carrera
+    @ManyToMany(mappedBy = "clasesDC")
     @Collapsed
     private Set<Carrera> carreraClase = new HashSet<>();
 

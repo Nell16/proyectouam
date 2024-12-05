@@ -22,6 +22,7 @@ public class Justificacion extends Identifiable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
+    @ReadOnly
     private EstadoJustificacion estado;
 
     @Column(name = "descripcion", length = 500)
