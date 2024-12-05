@@ -22,7 +22,14 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Table(name = "carrera")
-@View(name = "simple", members = "nombre, facultad.nombre, nombresClasesDC, nombresEstudiantes")
+@View(members =
+        "Carrera [#" +
+                "nombre, facultad;" +
+                "];" +
+                "descripcion { descripcion }" +
+                "clases_carrera { clasesDC }" +
+                "estudiantes { estudiantes }"
+)
 @Tab(properties ="nombre, facultad.nombre, nombresClasesDC, nombresEstudiantes")
 public class Carrera extends Identifiable {
 
@@ -38,9 +45,9 @@ public class Carrera extends Identifiable {
 
     @ManyToMany
     @JoinTable(
-            name = "carrera_claseDC", // Nombre de la tabla de unión
-            joinColumns = @JoinColumn(name = "carrera_id"), // Columna para Carrera
-            inverseJoinColumns = @JoinColumn(name = "claseDC_id") // Columna para ClaseDC
+            name = "carrera_claseDC",
+            joinColumns = @JoinColumn(name = "carrera_id"),
+            inverseJoinColumns = @JoinColumn(name = "claseDC_id")
     )
     private Set<ClaseDC> clasesDC = new HashSet<>();
 

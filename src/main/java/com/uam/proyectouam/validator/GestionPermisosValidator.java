@@ -9,7 +9,7 @@ import org.openxava.validators.IValidator;
 
 public class GestionPermisosValidator implements IValidator {
 
-    private String entidad; // Nombre de la entidad que se intenta gestionar
+    private String entidad;
 
     @Override
     public void validate(Messages messages) throws Exception {
@@ -46,7 +46,7 @@ public class GestionPermisosValidator implements IValidator {
             messages.add("No tiene permisos para gestionar la entidad: " + entidad);
         }
 
-        // Si el rol es ADMINISTRADOR o la entidad no requiere restricción, se permite la operación
+        // Si el rol es ADMINISTRADOR o la entidad no requiere restricción, se permite la operación o gestion por decirlo asi
         // Un ejemplo seria nuestra clase Justificacion y sus derivados que como tal no estan restringidas para la gestion de los USUARIOS
     }
 

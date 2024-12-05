@@ -29,55 +29,50 @@ import javax.persistence.*;
 @Tab(properties = "cif, nombreCompleto, correo, tipoUsuario, rol")
 public abstract class Usuario extends Identifiable {
 
-    @Column(length = 50, unique = true)
+    @Column(length = 30, unique = true)
     @Required
     private String cif;
 
-    @Column(length = 100)
+    @Column(length = 30)
     @Required
     private String primerNombre;
 
-    @Column(length = 100)
+    @Column(length = 30)
     private String segundoNombre; // Puede no ser obligatorio
 
-    @Column(length = 100)
+    @Column(length = 30)
     @Required
     private String primerApellido;
 
-    @Column(length = 100)
+    @Column(length = 30)
     private String segundoApellido; // Puede no ser obligatorio
 
-    @Column(length = 100, unique = true)
+    @Column(length = 30, unique = true)
     @Required
     @EmailList
     private String correo;
 
-    @Column(length = 255)
+    @Column(length = 30)
     @Required
     private String password;
 
-    @Column(name = "tipo_usuario", length = 50)
+    @Column(name = "tipo_usuario", length = 30)
     @ReadOnly
     private String tipoUsuario;
 
+    @Column(length = 30)
     @Enumerated(EnumType.STRING)
     @ReadOnly
     private Rol rol;
 
     @PrePersist
     protected void prePersist() {
-        this.rol = determineRol(); // Delegar a las subclases la definición del Rol
-        this.tipoUsuario = determineTipoUsuario(); // Delegar a las subclases la definición del Tipo de Usuario
+        this.rol = determineRol();
+        this.tipoUsuario = determineTipoUsuario();
     }
 
-//
-//      Metodo abstracto para que las subclases definan su tipo de usuario.
-//
     protected abstract String determineTipoUsuario();
 
-    /**
-     * Metodo abstracto para que las subclases definan su rol.
-     */
     protected abstract Rol determineRol();
 
     @Transient

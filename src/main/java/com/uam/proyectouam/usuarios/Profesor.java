@@ -21,11 +21,21 @@ import java.util.stream.Collectors;
 @Table(name = "profesor")
 @Getter
 @Setter
-@View(name = "simple", members = "nombreCompleto; grupos { grupos }")
+@View(members=
+        "cif;" +
+                "Estudiante [#" +
+                "primerNombre, correo;" +
+                "segundoNombre, password;" +
+                "primerApellido, tipoUsuario;" +
+                "segundoApellido, rol;" +
+                "];" +
+                "grupos { grupos }" +
+                "clases { clasesProfesor }"
+)
 @Tab(properties = "cif, nombreCompleto, correo, nombresClases, nombresGrupos")
 public class Profesor extends Usuario {
 
-    //Relaciones inician aqui
+
 
     @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
     @ListAction("Collection.add")

@@ -23,6 +23,13 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Table(name = "grupo")
+@View(members =
+                "nombreGrupo;" +
+                "];" +
+                "clase { clase }" +
+                "docente { profesor }" +
+                "estudiantes { estudiantes }"
+)
 @Tab(properties = "nombreGrupo, clase.nombre, profesor.nombreCompleto, nombresEstudiantes")
 public class Grupo extends Identifiable {
 
@@ -34,8 +41,8 @@ public class Grupo extends Identifiable {
     private Clase clase;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @ReferenceView("simple")
     private Profesor profesor;
+
 
     @ManyToMany
     @JoinTable(

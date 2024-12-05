@@ -4,15 +4,27 @@ import lombok.Getter;
 import lombok.Setter;
 import org.openxava.annotations.EmailList;
 import org.openxava.annotations.TextArea;
+import org.openxava.annotations.View;
 import org.openxava.model.Identifiable;
-import java.util.Date;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
 
 @Entity
 @Table(name = "referente_justificante")
 @Getter
 @Setter
+@View(members =
+        "Emitor [#" +
+                "nombre, correo;" +
+                "telefono, institucion;" +
+                "fechaEmision;" +
+                "];" +
+                "Motivo { motivoConstancia }" +
+                "justificaciones { justificaciones }"
+)
 public class ReferenteJustificante extends Identifiable {
 
     @Column(length = 100, nullable = false)
@@ -36,5 +48,6 @@ public class ReferenteJustificante extends Identifiable {
     @Column(nullable = false)
     private Date fechaEmision;
 
+    @ManyToMany(mappedBy = "referentesJustificantes")
+    private List<Justificacion> justificaciones = new ArrayList<>();
 }
-
