@@ -1,11 +1,19 @@
-package com.uam.proyectouam.model;
+package com.uam.proyectouam.clases;
 
 import javax.persistence.*;
 
 import lombok.*;
+import org.openxava.annotations.EntityValidator;
+import org.openxava.annotations.PropertyValue;
 import org.openxava.annotations.Tab;
 
 @Entity
+@EntityValidator(
+        value = com.uam.proyectouam.validator.GestionPermisosValidator.class,
+        properties = {
+                @PropertyValue(name = "entidad", value = "ClaseBasica")
+        }
+)
 @Getter
 @Setter
 @Table(name = "clase_basica")

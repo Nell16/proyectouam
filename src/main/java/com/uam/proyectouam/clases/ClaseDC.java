@@ -1,7 +1,8 @@
-package com.uam.proyectouam.model;
+package com.uam.proyectouam.clases;
 
 import javax.persistence.*;
 
+import com.uam.proyectouam.model.Carrera;
 import org.openxava.annotations.*;
 import lombok.*;
 
@@ -10,6 +11,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@EntityValidator(
+        value = com.uam.proyectouam.validator.GestionPermisosValidator.class,
+        properties = {
+                @PropertyValue(name = "entidad", value = "ClaseDC")
+        }
+)
 @Table(name = "clase_dc")
 @Getter
 @Setter

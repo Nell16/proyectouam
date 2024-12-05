@@ -10,6 +10,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@EntityValidator(
+        value = com.uam.proyectouam.validator.GestionPermisosValidator.class,
+        properties = {
+                @PropertyValue(name = "entidad", value = "Facultad")
+        }
+)
 @Table(name = "facultad")
 @Getter
 @Setter

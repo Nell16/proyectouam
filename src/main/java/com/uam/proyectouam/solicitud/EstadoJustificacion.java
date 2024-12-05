@@ -1,4 +1,4 @@
-package com.uam.proyectouam.model;
+package com.uam.proyectouam.solicitud;
 
 public enum EstadoJustificacion {
     PENDIENTE,

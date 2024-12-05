@@ -1,8 +1,9 @@
-package com.uam.proyectouam.model;
+package com.uam.proyectouam.solicitud;
 
 import javax.persistence.*;
 
 
+import com.uam.proyectouam.usuarios.Usuario;
 import lombok.*;
 import org.openxava.annotations.*;
 import org.openxava.model.Identifiable;

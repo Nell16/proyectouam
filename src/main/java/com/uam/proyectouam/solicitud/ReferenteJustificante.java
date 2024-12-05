@@ -1,10 +1,8 @@
-package com.uam.proyectouam.model;
+package com.uam.proyectouam.solicitud;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.openxava.annotations.EmailList;
-import org.openxava.annotations.Required;
-import org.openxava.annotations.Stereotype;
 import org.openxava.annotations.TextArea;
 import org.openxava.model.Identifiable;
 import java.util.Date;

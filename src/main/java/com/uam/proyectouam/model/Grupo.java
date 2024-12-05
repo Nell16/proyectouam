@@ -1,6 +1,10 @@
 package com.uam.proyectouam.model;
 
 import javax.persistence.*;
+
+import com.uam.proyectouam.clases.Clase;
+import com.uam.proyectouam.usuarios.Estudiante;
+import com.uam.proyectouam.usuarios.Profesor;
 import lombok.*;
 import org.openxava.annotations.*;
 import org.openxava.model.Identifiable;
@@ -10,6 +14,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
+@EntityValidator(
+        value = com.uam.proyectouam.validator.GestionPermisosValidator.class,
+        properties = {
+                @PropertyValue(name = "entidad", value = "Grupo")
+        }
+)
 @Getter
 @Setter
 @Table(name = "grupo")

@@ -4,6 +4,8 @@ import org.openxava.annotations.LabelFormat;
 import org.openxava.annotations.LabelFormatType;
 import org.openxava.annotations.Required;
 
+import com.uam.proyectouam.usuarios.Rol; // Importa el enum unificado
+
 import javax.persistence.Column;
 
 public class SignIn {
@@ -18,8 +20,7 @@ public class SignIn {
     @LabelFormat(LabelFormatType.SMALL)
     private String password;
 
-    private enum ROL{ADMIN, USER}
-    private ROL rol;
+    private Rol rol; // Usamos el enum unificado
 
     public String getUser() {
         return user;
@@ -37,11 +38,11 @@ public class SignIn {
         this.password = password;
     }
 
-    public ROL getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(ROL rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 }

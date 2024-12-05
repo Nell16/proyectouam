@@ -1,6 +1,8 @@
-package com.uam.proyectouam.model;
+package com.uam.proyectouam.solicitud;
 
 import javax.persistence.*;
+
+import com.uam.proyectouam.usuarios.Usuario;
 import lombok.*;
 import org.openxava.annotations.*;
 import org.openxava.model.Identifiable;
@@ -9,9 +11,11 @@ import org.openxava.model.Identifiable;
 @Table(name = "imagenes_adjuntas")
 @Getter
 @Setter
+//aqui hace falta un tab y anotaciones para estetica
 public class ImagenesAdjuntas extends Identifiable {
 
     @ManyToOne
+    @Collapsed
     @JoinColumn(name = "justificacion_id", nullable = false)
     private Justificacion justificacion;
 
@@ -22,10 +26,6 @@ public class ImagenesAdjuntas extends Identifiable {
     @Hidden
     @Column(name = "nombre_documento", nullable = false, length = 255)
     private String nombreDocumento;
-
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
 
 }
 

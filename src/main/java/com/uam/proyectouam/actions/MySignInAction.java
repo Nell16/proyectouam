@@ -1,8 +1,8 @@
-package com.uam.proyectouam.action;
+package com.uam.proyectouam.actions;
 
 import com.openxava.naviox.Modules;
 import com.openxava.naviox.actions.ForwardToOriginalURIBaseAction;
-import com.uam.proyectouam.model.Usuario;
+import com.uam.proyectouam.usuarios.Usuario;
 import org.openxava.jpa.XPersistence;
 import org.openxava.util.Is;
 import org.openxava.util.Users;
@@ -31,8 +31,12 @@ public class MySignInAction extends ForwardToOriginalURIBaseAction {
             addError("unauthorized_user");
             return;
         }
+        Usuario usuario = lista.get(0);
+
         HttpSession session = getRequest().getSession();
         session.setAttribute("naviox.user", userName);
+        session.setAttribute("user.role", usuario.getRol()); // Guardar rol del usuario
+
         Modules modules = (Modules) session.getAttribute("modules");
         Users.setCurrent(userName);
         modules.reset();
